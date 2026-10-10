@@ -1,8 +1,11 @@
 import pandas as pd
 import matplotlib.pyplot as plt
+from pathlib import Path
 
-df = pd.read_csv("Sales_Analysis_Project.csv")
+BASE_DIR = Path(__file__).resolve().parent
 
+# Load the original dataset
+df = pd.read_csv(BASE_DIR / "Sales_Analysis_Project.csv")
 
 #DATA CLEANING & EDA 
 
@@ -311,3 +314,8 @@ print("1. Investigate why the lowest-margin region underperforms.")
 print("2. Review pricing and costs for products with lower profit margins.")
 print("3. Understand purchasing patterns of the most profitable customers.")
 print("4. Use category-level sales trends to guide inventory planning.")
+
+# Save the final processed dataset
+df.to_csv(BASE_DIR / "Sales_Analysis_Cleaned.csv", index=False)
+
+print("\nCleaned dataset saved successfully!")
